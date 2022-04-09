@@ -2,7 +2,7 @@ from typing import Optional
 
 from rest_framework import status as status_code
 
-from currency_pair_signalist.constants.base_constants import BaseConstants
+from signal_producer.constants.base_constants import BaseConstants
 
 
 class ResponseUtils:

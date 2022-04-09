@@ -2,9 +2,9 @@ from rest_framework import status
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 
-from currency_pair_signalist.constants.base_constants import BaseConstants
-from currency_pair_signalist.utils.response_utils import ResponseUtils
-from signalist.serializers.currency_pair_signalist_serializer import CurrencyPairSignalistSerializer
+from signal_producer.constants.base_constants import BaseConstants
+from signal_producer.utils.response_utils import ResponseUtils
+from signalist.serializers.signal_producer_serializer import CurrencyPairSignalistSerializer
 
 
 class CurrencyPairSignalistView(GenericAPIView):

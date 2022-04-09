@@ -1,5 +1,5 @@
 """
-WSGI config for currency_pair_signalist project.
+WSGI config for signal_producer project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'currency_pair_signalist.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'signal_producer.settings')
 
 application = get_wsgi_application()

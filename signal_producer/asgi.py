@@ -1,5 +1,5 @@
 """
-ASGI config for currency_pair_signalist project.
+ASGI config for signal_producer project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'currency_pair_signalist.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'signal_producer.settings')
 
 application = get_asgi_application()
