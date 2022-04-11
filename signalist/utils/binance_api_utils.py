@@ -17,4 +17,4 @@ class BinanceAPIUtils:
 
         response = requests.get(cls.binance_api_url, params=query_params)
 
-        return response.json()
+        return response

@@ -44,10 +44,18 @@ class RedisAdapter:
 
         return value
 
-    def set_currency_timestamp_price_redis_cache(self, currency_name, timestamp, currency_price) -> None:
+    def set_currency_timestamp_price_redis_cache(self, currency_name: str, timestamp: int,
+                                                 currency_price: float) -> None:
         self.redis_obj.set(
             name=RedisKeysConfig.CurrencyTimestampData.key_template.format(
                 currency_name=currency_name,
                 timestamp=timestamp),
             value=currency_price,
             ex=RedisKeysConfig.CurrencyTimestampData.ttl_time)
+
+    def get_currency_timestamp_price_redis_cache(self, currency_name: str, timestamp: int) -> float:
+        key = RedisKeysConfig.CurrencyTimestampData.key_template.format(
+            currency_name=currency_name,
+            timestamp=timestamp)
+
+        return float(self.redis_obj.get(name=key).decode('utf-8'))

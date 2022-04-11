@@ -17,6 +17,6 @@ from django.urls import path, include
 
 urlpatterns = [
 
-    path('api/v1/signal/', include('signalist.urls', namespace='v1_signalist')),
+    path('api/v1/signal/produce/', include('signalist.urls', namespace='v1_signalist')),
 
 ]
