@@ -38,9 +38,7 @@ class RedisAdapter:
         value = self.redis_obj.get(name=key)
 
         if value:
-            value = value.split(',')
-        # else:
-        #     value = []
+            value = value.decode('utf-8').split(',')[:-1]
 
         return value
 

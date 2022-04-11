@@ -8,10 +8,13 @@ from rest_framework import status
 from signal_producer.adapters.redis_adapter import RedisAdapter
 from signal_producer.constants.base_constants import BaseConstants
 from signal_producer.constants.channel_addresses_constants import channel_addresses_constants
+from signal_producer.signalist_celery import app
 from signalist.utils.binance_api_utils import BinanceAPIUtils
 
 
-def producer_task(currency_name: str):
+@app.task(bind=True)
+def producer_task(self, currency_name: str):
+    print("start of producer : {}".format(currency_name))
     # request to Binance API to get data
     data = BinanceAPIUtils.get_currency_pair_data_from_binance(currency_name=currency_name)
 
@@ -31,7 +34,8 @@ def producer_task(currency_name: str):
         currency_price=currency_price)
 
 
-def signaler_task(currency_name: str, return_channel_name: str, desired_price: float):
+@app.task(bind=True)
+def signaler_task(self, currency_name: str, return_channel_name: str, desired_price: float):
     desired_price = float(desired_price)
 
     timestamp = int(datetime.datetime.now().replace(minute=datetime.datetime.now().minute - 1, second=59).timestamp())

@@ -13,6 +13,9 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'signal_producer.settings')
 # https://docs.celeryproject.org/en/stable/userguide/configuration.html
 app.config_from_object("django.conf:settings", namespace="CELERY")
 
+import django
+
+django.setup()
 # When we use the following in Django, it loads all the <appname>.tasks
 # files and registers any tasks it finds in them. We can import the
 # tasks files some other way if we prefer.
