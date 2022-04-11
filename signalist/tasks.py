@@ -14,7 +14,6 @@ from signalist.utils.binance_api_utils import BinanceAPIUtils
 
 @app.task(bind=True)
 def producer_task(self, currency_name: str):
-    print("start of producer : {}".format(currency_name))
     # request to Binance API to get data
     data = BinanceAPIUtils.get_currency_pair_data_from_binance(currency_name=currency_name)
 
