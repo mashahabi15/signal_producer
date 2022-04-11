@@ -4,3 +4,5 @@ class BaseConstants:
     code: str = "code"
     status: str = "status"
     data: str = "data"
+    symbol: str = "symbol"
+    interval: str = "interval"

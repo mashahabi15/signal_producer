@@ -4,6 +4,7 @@ from rest_framework.response import Response
 
 from signal_producer.constants.base_constants import BaseConstants
 from signal_producer.utils.response_utils import ResponseUtils
+from signalist import tasks
 from signalist.serializers.signal_producer_serializer import CurrencyPairSignalistSerializer
 
 
@@ -23,7 +24,8 @@ class CurrencyPairSignalistView(GenericAPIView):
     def get(self, request, *args, **kwargs):
         serializer = self.get_serializer()
         if serializer.is_valid(raise_exception=False):
-            pass
+            data = serializer.data
+            tasks.producer_task(currency_name=data.get('currency_name'))
 
         result = ResponseUtils.get_final_response_result(
             code=status.HTTP_400_BAD_REQUEST,

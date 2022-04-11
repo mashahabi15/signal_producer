@@ -141,3 +141,7 @@ CELERY_RESULT_BACKEND = 'redis://:{}@{}:{}/{}'.format(
     config('REDIS_2_HOST_IP'),
     config('REDIS_2_HOST_PORT'),
     config('REDIS_2_DB'))
+
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_TASK_SERIALIZER = "json"
